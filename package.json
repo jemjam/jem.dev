@@ -1,0 +1,43 @@
+{
+    "name": "jem.dev",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "prettier:check": "yarn run prettier -c '**/**.{ts,tsx,json,md}'",
+        "prettier:format": "yarn run prettier --write '**/**.{ts,tsx,json,md}'",
+        "start": "next start"
+    },
+    "dependencies": {
+        "@mdx-js/loader": "^1.6.16",
+        "@next/mdx": "^9.5.2",
+        "fathom-client": "^3.0.0",
+        "front-matter": "^4.0.2",
+        "lodash": "^4.17.20",
+        "next": "9.5.2",
+        "next-mdx-enhanced": "github:jemjam/next-mdx-enhanced#fix-for-next-9.5.2",
+        "preact": "^10.4.7",
+        "preact-render-to-string": "^5.1.10",
+        "react": "github:preact-compat/react#1.0.0",
+        "react-dom": "github:preact-compat/react-dom#1.0.0",
+        "react-ssr-prepass": "npm:preact-ssr-prepass@^1.0.1",
+        "remark-emoji": "^2.1.0",
+        "remark-highlight.js": "^6.0.0",
+        "remark-images": "^2.0.0"
+    },
+    "devDependencies": {
+        "@types/lodash": "^4.14.159",
+        "@types/node": "^14.0.27",
+        "@types/react": "^16.9.46",
+        "prettier": "^2.0.5",
+        "typescript": "^3.9.7"
+    },
+    "prettier": {
+        "semi": false,
+        "singleQuote": true,
+        "proseWrap": "always",
+        "tabWidth": 4,
+        "trailingComma": "all"
+    }
+}
