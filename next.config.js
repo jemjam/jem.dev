@@ -1,3 +1,4 @@
+const process = require('process')
 const images = require('remark-images')
 const emoji = require('remark-emoji')
 const highlight = require('remark-highlight.js')
@@ -44,4 +45,8 @@ module.exports = withMdx({
         return config
     },
     pageExtensions: ['js', 'jsx', 'mdx', 'tsx', 'ts'],
+    env: {
+        FATHOM_SITE_ID: process.env.FATHOM_SITE_ID,
+        FATHOM_URL: process.env.FATHOM_URL
+    },
 })
