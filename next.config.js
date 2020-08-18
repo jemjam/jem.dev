@@ -46,8 +46,7 @@ module.exports = withMdx({
     },
     pageExtensions: ['js', 'jsx', 'mdx', 'tsx', 'ts'],
     env: {
-        NEXT_PUBLIC_ANALYTICS_SITE_ID: process.env.FATHOM_SITE_ID,
-        NEXT_PUBLIC_ANALYTICS_URL: process.env.FATHOM_URL,
-        NEXT_PUBLIC_DEMO: process.env.DEMO_VALUE,
+        FATHOM_SITE_ID: process.env.NEXT_PUBLIC_FATHOM_SITE_ID,
+        FATHOM_URL: process.env.NEXT_PUBLIC_FATHOM_URL
     },
 })
