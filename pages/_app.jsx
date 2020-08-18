@@ -35,7 +35,6 @@ const Application = ({ Component, pageProps }) => {
 
     useEffect(() => {
         // Initialize Fathom when the app loads
-        console.log("Okay, we're running with", { FATHOM_SITE_ID, FATHOM_URL })
         Fathom.load(FATHOM_SITE_ID, {
             url: FATHOM_URL,
         })
