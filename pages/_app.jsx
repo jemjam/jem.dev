@@ -19,8 +19,6 @@ import Link from 'next/link'
 // Some codeblock styles for now...
 import 'highlight.js/styles/shades-of-purple.css'
 
-const { FATHOM_TRACKING_CODE, FATHOM_URL } = process.env
-
 const components = {
     wrapper: ({ children, ...props }) => {
         console.log(children.map((child) => child.props.mdxType))
@@ -32,10 +30,12 @@ const components = {
 const Application = ({ Component, pageProps }) => {
     const router = useRouter()
 
+    const FATHOM_SITE_ID = process.env.FATHOM_SITE_ID
+    const FATHOM_URL = process.env.FATHOM_URL
+
     useEffect(() => {
         // Initialize Fathom when the app loads
-        Fathom.load(FATHOM_TRACKING_CODE, {
-            includedDomains: ['jem.dev'],
+        Fathom.load(FATHOM_SITE_ID, {
             url: FATHOM_URL,
         })
 
