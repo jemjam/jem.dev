@@ -30,8 +30,8 @@ const components = {
 const Application = ({ Component, pageProps }) => {
     const router = useRouter()
 
-    const FATHOM_SITE_ID = process.env.NEXT_PUBLIC_ANALYTICS_SITE_ID
-    const FATHOM_URL = process.env.NEXT_PUBLIC_ANALYTICS_URL
+    const FATHOM_SITE_ID = process.env.NEXT_PUBLIC_FATHOM_SITE_ID
+    const FATHOM_URL = process.env.NEXT_PUBLIC_FATHOM_URL
 
     useEffect(() => {
         console.log("We are initing analtyics, but don't have values?", { FATHOM_SITE_ID, FATHOM_URL })
