@@ -30,11 +30,10 @@ const components = {
 const Application = ({ Component, pageProps }) => {
     const router = useRouter()
 
-    const FATHOM_SITE_ID = process.env.NEXT_PUBLIC_FATHOM_SITE_ID
-    const FATHOM_URL = process.env.NEXT_PUBLIC_FATHOM_URL
+    const FATHOM_SITE_ID = process.env.NEXT_PUBLIC_ANALYTICS_SITE_ID
+    const FATHOM_URL = process.env.NEXT_PUBLIC_ANALYTICS_URL
 
     useEffect(() => {
-        console.log(`We are initing analtyics, but don't have values? ${process.env.NEXT_PUBLIC_DEMO}`)
         // Initialize Fathom when the app loads
         Fathom.load(FATHOM_SITE_ID, {
             url: FATHOM_URL,
