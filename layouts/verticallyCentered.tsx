@@ -1,12 +1,24 @@
 import React from 'react'
+import Head from 'next/head'
 
 interface TemplateWrapper {
     children: React.ReactChildren
+    frontMatter?: any
 }
 
-const VerticallyCentered:React.FunctionComponent<TemplateWrapper> = (props) => {
+const VerticallyCentered: React.FunctionComponent<TemplateWrapper> = (
+    props,
+) => {
+    const pageTitle = props?.frontMatter?.title ?? "jem.dev"
     return (
         <div className="pageWrapper">
+            <Head>
+                <title>{pageTitle}</title>
+                <meta
+                    name="viewport"
+                    content="initial-scale=1.0, width=device-width"
+                />
+            </Head>
             <main>{props.children}</main>
             <style jsx>
                 {`
@@ -28,12 +40,30 @@ const VerticallyCentered:React.FunctionComponent<TemplateWrapper> = (props) => {
             <style global jsx>{`
                 body {
                     font-family: sans-serif;
+                    font-size: 1.45rem;
+                    line-height: 1.25em;
                     margin: 0;
                     padding: 0;
-                    color: white;
-                    background: #7b635a;
+                    color: #36392d;
+                    background: #cad5a6;
                 }
-                h1 a { text-decoration: none; }
+                h1, h2, h3, h4 { font-weight: normal; }
+                h1 a, h2 a, h3 a, h4a {
+                    text-decoration: none;
+                }
+                a {
+                    color: #47590d;
+                }
+                @media (prefers-color-scheme: dark) {
+                    body {
+                        color: #cad5a6;
+                        background: #36392d;
+                        font-weight: lighter;
+                    }
+                    a {
+                        color: #8db01a;
+                    }
+                }
             `}</style>
         </div>
     )
