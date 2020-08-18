@@ -48,6 +48,6 @@ module.exports = withMdx({
     env: {
         NEXT_PUBLIC_FATHOM_SITE_ID: process.env.NEXT_PUBLIC_FATHOM_SITE_ID,
         NEXT_PUBLIC_FATHOM_URL: process.env.NEXT_PUBLIC_FATHOM_URL,
-        NEXT_PUBLIC_DEMO: process.env.NEXT_PUBLIC_DEMO,
+        NEXT_PUBLIC_DEMO: "STATIC"
     },
 })
