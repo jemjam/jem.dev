@@ -1,0 +1,56 @@
+import VerticallyCentered from 'layouts/verticallyCentered'
+
+export default VerticallyCentered
+
+export const frontMatter = {
+    title: 'Analytics and env variables...',
+}
+
+<h1>{frontMatter.title}</h1>
+
+Today I worked on a couple of updates to the base `_app.jsx` template. There's
+not much on the page right now: almost nothing for a visual template outside of
+vertically centering and applying a max-width to the content.
+
+## Color Theme
+
+However, I was able to update the colors to use a base theme that is more
+analagous for now. (I generated the theme at coolors,
+[available here](https://coolors.co/cad5a6-a4b374-8db01a-535745-666665), then
+made minor adjustments to individual shades where necessary to improve color
+contrast.)
+
+## Dark Mode
+
+I also applied a simple media query to enable a dark mode variant. (Even if we
+don't have a toggle on page yet, at least the page will show up darker for folks
+that use a dark system or themes.) The dark mode version will use dark hues and
+automatically thin the san-serif font a little.
+
+I also fleshed out the [`100Days`](./100days) page for tracking this project
+progress. Updated some of the colors used along with a very rudimentary
+dark-mode variation. Also made some tweaks so my tracking code works properly.
+
+## Troubleshooting...
+
+I did run into some difficulty getting the environment variables that I feed
+into my client side analytics solution to map correctly. While the server side
+components have access to env values easily enough, they only end up being
+passed to the client side code on vercel if you make sure to prefix them
+correctly.
+
+I shifted values around a couple of times and finally found what works. My
+testing consisted of various commits to a feature branch and deployed
+automatically on vercel. From there I was able to make updates incrementally and
+verify whether or not the values made it to the browser.
+
+-   You can set whatever you want for the root environment variable KEYS (the
+    values you'd set with real environment variables or passed from the
+    environment config from vercel)
+-   In `next.config.js` your environment variables are mapped.
+-   You must use `.env` keys here with `NEXT_PUBLIC_` prefixed to make them
+    actually available to scripts.
+-   Your scripts should generally refer to `process.env.NEXT_PUBLIC_X` directly.
+    I def couldn't `console.log` the value of `process.env` directly, it was
+    always undefined, so I suspect there is a loader somewhere that is
+    transforming those environment values for runtime somehow...

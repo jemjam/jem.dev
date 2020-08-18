@@ -10,11 +10,11 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { MDXProvider } from '@mdx-js/react'
-import process from 'process'
 import * as Fathom from 'fathom-client'
 
 import Link from 'next/link'
 
+const PUBLIC = process.env.NEXT_PUBLIC_DEMO
 
 // Some codeblock styles for now...
 import 'highlight.js/styles/shades-of-purple.css'
@@ -30,8 +30,8 @@ const components = {
 const Application = ({ Component, pageProps }) => {
     const router = useRouter()
 
-    const FATHOM_SITE_ID = process.env.FATHOM_SITE_ID
-    const FATHOM_URL = process.env.FATHOM_URL
+    const FATHOM_SITE_ID = process.env.NEXT_PUBLIC_ANALYTICS_SITE_ID
+    const FATHOM_URL = process.env.NEXT_PUBLIC_ANALYTICS_URL
 
     useEffect(() => {
         // Initialize Fathom when the app loads
