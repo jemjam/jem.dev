@@ -34,6 +34,7 @@ const Application = ({ Component, pageProps }) => {
     const FATHOM_URL = process.env.NEXT_PUBLIC_ANALYTICS_URL
 
     useEffect(() => {
+        console.log("We are initing analtyics, but don't have values?", { FATHOM_SITE_ID, FATHOM_URL })
         // Initialize Fathom when the app loads
         Fathom.load(FATHOM_SITE_ID, {
             url: FATHOM_URL,
