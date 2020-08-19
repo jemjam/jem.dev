@@ -1,6 +1,8 @@
 import React from 'react'
 import Head from 'next/head'
 
+import PageHeader from 'components/PageHeader'
+
 interface TemplateWrapper {
     children: React.ReactChildren
     frontMatter?: any
@@ -19,7 +21,10 @@ const VerticallyCentered: React.FunctionComponent<TemplateWrapper> = (
                     content="initial-scale=1.0, width=device-width"
                 />
             </Head>
-            <main>{props.children}</main>
+            <div className="contentWrapper">
+                <PageHeader />
+                <main>{props.children}</main>
+            </div>
             <style jsx>
                 {`
                     .pageWrapper {
@@ -28,12 +33,18 @@ const VerticallyCentered: React.FunctionComponent<TemplateWrapper> = (
                         display: flex;
                         align-items: center;
                         justify-content: center;
+                        overflow: auto;
+                    }
+                    .contentWrapper {
+                        max-height: 100%;
+                        max-width: 100%;
+                        padding: 1rem;
+                        box-sizing: border-box;
+                        flex: 1 0 auto;
                     }
                     main {
                         margin: 0 auto;
                         max-width: 70ch;
-                        padding: 1rem;
-                        max-height: 100%;
                     }
                 `}
             </style>
