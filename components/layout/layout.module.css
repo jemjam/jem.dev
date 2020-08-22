@@ -1,0 +1,33 @@
+.pageWrapper {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* SIDEBAR */
+
+.withSidebar {
+  overflow: hidden;
+  display: flex;
+  padding: calc(var(--s1));
+  height: 100%;
+  overflow-y: auto;;
+}
+
+.withSidebar > * {
+  display: flex;
+  flex-wrap: wrap;
+  margin: calc(var(--s1) / 2 * -1);
+  flex-direction: row-reverse;
+}
+
+.withSidebar > * > * {
+  margin: calc(var(--s1) / 2);
+  flex-basis: 16rem;
+  flex-grow: 1;
+}
+
+.withSidebar > * > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-width: calc(50% - var(--s1));
+}

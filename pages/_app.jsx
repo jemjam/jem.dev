@@ -13,8 +13,7 @@ import { MDXProvider } from '@mdx-js/react'
 import * as Fathom from 'fathom-client'
 
 import Link from 'next/link'
-
-const PUBLIC = process.env.NEXT_PUBLIC_DEMO
+import "components/global-styles.css"
 
 // Some codeblock styles for now...
 import 'highlight.js/styles/shades-of-purple.css'
