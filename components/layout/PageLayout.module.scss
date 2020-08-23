@@ -1,0 +1,82 @@
+/*
+.with-sidebar {
+  overflow: hidden;
+}
+
+.with-sidebar > * {
+  display: flex;
+  flex-wrap: wrap;
+  margin: calc(var(--s1) / 2 * -1);
+}
+
+.with-sidebar > * > * {
+  margin: calc(var(--s1) / 2);
+  flex-grow: 1;
+}
+
+.with-sidebar > * > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-width: calc(50% - var(--s1));
+}
+*/
+
+.pageWrapper {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    padding: 0.5rem;
+
+    background-color: rgba(0, 0, 0, 0.1);
+
+    > * {
+        margin: 0.5rem;
+        // flex-basis: 16rem; // The sidebar width
+    }
+}
+
+.pageHeader {
+    background-color: rgba(0, 0, 255, 0.5);
+    flex-grow: 1;
+}
+
+.pageContentWrapper {
+    min-width: calc(50% - 1rem);
+    flex-basis: 0;
+    flex-grow: 999;
+    display: flex;
+    flex-direction: column;
+}
+
+.pageContent {
+    background-color: rgba(255, 255, 0, 0.9);
+    flex-grow: 999;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &::before,
+    &::after {
+        content: "";
+        display: block;
+        flex: 0 1 auto;
+    }
+    &::before { height: calc(3/8 * 100%); }
+    &::after { height: calc(5/8 * 100%) }
+}
+
+.contentArea {
+    background-color: rgba(255,255,255,0.8);
+    padding: 2rem;
+
+    max-width: 72ch;
+    margin: 0 auto;
+}
+
+.pageFooter {
+    background-color: rgba(255, 0, 0, 0.5);
+}

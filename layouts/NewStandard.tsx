@@ -6,6 +6,8 @@ import HeadSidebar from 'components/page/HeadSidebar'
 import { PageWrapper, WithRightSidebar } from 'components/layout'
 import styles from 'layouts/styles.module.css'
 
+import NewPageLayout from 'components/layout/PageLayout'
+
 interface TemplateWrapper {
     children: React.ReactElement
     frontMatter?: any
@@ -24,13 +26,15 @@ const PageLayout: React.FunctionComponent<TemplateWrapper> = (props) => {
                 />
             </Head>
             <WithRightSidebar sidebar={<HeadSidebar />}>
-
-                <main>{props.children}</main>
-                <footer>This is the page footer</footer>
+                <>
+                    <main>{props.children}</main>
+                    <footer>This is the page footer</footer>
+                </>
             </WithRightSidebar>
         </>
         // </PageWrapper>
     )
 }
 
-export default PageLayout
+// export default PageLayout
+export default NewPageLayout

@@ -25,7 +25,8 @@
         "react-ssr-prepass": "npm:preact-ssr-prepass@^1.0.1",
         "remark-emoji": "^2.1.0",
         "remark-highlight.js": "^6.0.0",
-        "remark-images": "^2.0.0"
+        "remark-images": "^2.0.0",
+        "sass": "^1.26.10"
     },
     "devDependencies": {
         "@types/lodash": "^4.14.159",
