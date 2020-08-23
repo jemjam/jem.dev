@@ -16,7 +16,6 @@ interface TemplateWrapper {
 const PageLayout: React.FunctionComponent<TemplateWrapper> = (props) => {
     const pageTitle = props?.frontMatter?.title ?? 'jem.dev'
     return (
-        // <PageWrapper className={styles.pageWrap}>
         <>
             <Head>
                 <title>{pageTitle}</title>
@@ -25,16 +24,14 @@ const PageLayout: React.FunctionComponent<TemplateWrapper> = (props) => {
                     content="initial-scale=1.0, width=device-width"
                 />
             </Head>
-            <WithRightSidebar sidebar={<HeadSidebar />}>
-                <>
-                    <main>{props.children}</main>
-                    <footer>This is the page footer</footer>
-                </>
-            </WithRightSidebar>
+            <NewPageLayout
+                header={<HeadSidebar />}
+                footer={<p>Copyright shit</p>}
+            >
+                {props.children}
+            </NewPageLayout>
         </>
-        // </PageWrapper>
     )
 }
 
-// export default PageLayout
-export default NewPageLayout
+export default PageLayout

@@ -10,8 +10,11 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { MDXProvider } from '@mdx-js/react'
+import PageLayout from 'components/layout/PageLayout'
 import * as Fathom from 'fathom-client'
 
+import PageHeader from 'components/page/HeadSidebar'
+import PageFooter from 'components/page/ContentFooter'
 import Link from 'next/link'
 import "components/global-styles.css"
 
@@ -19,10 +22,6 @@ import "components/global-styles.css"
 import 'highlight.js/styles/shades-of-purple.css'
 
 const components = {
-    wrapper: ({ children, ...props }) => {
-        console.log(children.map((child) => child.props.mdxType))
-        return <>{children}</>
-    },
     a: Link, // Ensures our page navigation is snappy
 }
 
@@ -51,9 +50,11 @@ const Application = ({ Component, pageProps }) => {
     }, [])
 
     return (
-        <MDXProvider components={components}>
-            <Component {...pageProps} />
-        </MDXProvider>
+        <PageLayout header={<PageHeader />} footer={<PageFooter />}>
+            <MDXProvider components={components}>
+                <Component {...pageProps} />
+            </MDXProvider>
+        </PageLayout>
     )
 }
 

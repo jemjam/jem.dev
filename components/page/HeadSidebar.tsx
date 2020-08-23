@@ -5,14 +5,15 @@ import styles from './Header.module.css'
 const WordMark = () => <h1>{`<jem.dev />`}</h1>
 
 const Logo = () => (
-    <span>
+    <a href={'/'}>
         🌱
         <style jsx>{`
-            span {
+            a {
+                text-decoration: none;
                 font-size: 4rem;
             }
         `}</style>
-    </span>
+    </a>
 )
 
 const MenuLink = () => <a href="#nav">Menu</a>
