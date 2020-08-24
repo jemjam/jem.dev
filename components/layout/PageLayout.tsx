@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from 'react'
+import React, {FunctionComponent, ReactNode} from 'react'
 import styles from './PageLayout.module.scss'
 
 interface PageProps {
-  header?: FunctionComponent
-  footer?: FunctionComponent
+  header?: ReactNode
+  footer?: ReactNode
 }
 
 /**

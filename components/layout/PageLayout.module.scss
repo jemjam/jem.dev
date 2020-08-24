@@ -40,6 +40,7 @@
 
 .pageHeader {
     background-color: rgba(0, 0, 255, 0.5);
+    display: flex;
     flex-grow: 1;
 }
 
@@ -53,6 +54,7 @@
 
 .pageContent {
     background-color: rgba(255, 255, 0, 0.9);
+    background-image: url(/squiggle.svg);
     flex-grow: 999;
     margin-bottom: 1rem;
     display: flex;
@@ -71,7 +73,7 @@
 
 .contentArea {
     width: 100%;
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgba(255,255,255,0.96);
     padding: 2rem;
 
     max-width: 72ch;

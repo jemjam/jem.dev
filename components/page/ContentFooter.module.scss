@@ -1,0 +1,12 @@
+.contentFooter {
+    max-width: 72ch;
+    padding: 0.5rem 2rem;
+    margin: 0 auto;
+
+    > *:first-child {
+        margin-top: 0;
+    }
+    > *:last-child {
+        margin-bottom: 0;
+    }
+}

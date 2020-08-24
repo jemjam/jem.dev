@@ -1,10 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 
-import PageHeader from 'components/PageHeader'
 import HeadSidebar from 'components/page/HeadSidebar'
-import { PageWrapper, WithRightSidebar } from 'components/layout'
-import styles from 'layouts/styles.module.css'
 
 import NewPageLayout from 'components/layout/PageLayout'
 

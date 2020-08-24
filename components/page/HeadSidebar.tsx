@@ -1,19 +1,14 @@
 import React from 'react'
+import Link from 'next/link'
 
-import styles from './Header.module.css'
+import styles from './Header.module.scss'
 
 const WordMark = () => <h1>{`<jem.dev />`}</h1>
 
 const Logo = () => (
-    <a href={'/'}>
-        🌱
-        <style jsx>{`
-            a {
-                text-decoration: none;
-                font-size: 4rem;
-            }
-        `}</style>
-    </a>
+    <Link href="/">
+        <span className={styles.logoEmoji}>🌱</span>
+    </Link>
 )
 
 const MenuLink = () => <a href="#nav">Menu</a>
@@ -24,12 +19,10 @@ const MenuLink = () => <a href="#nav">Menu</a>
  * At wider layouts it becomes a full right sidebar
  */
 const HeadSidebar: React.FunctionComponent = () => (
-    <header className={styles.pageHeader}>
-        <div>
-            <Logo />
-            <WordMark />
-            <MenuLink />
-        </div>
-    </header>
+    <div className={styles.pageHeader}>
+        <Logo />
+        <WordMark />
+        <MenuLink />
+    </div>
 )
 export default HeadSidebar
