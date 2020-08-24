@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 
-import PageHeader from 'components/PageHeader'
+// import PageHeader from 'components/PageHeader'
 
 interface TemplateWrapper {
     children: React.ReactChildren
@@ -22,7 +22,7 @@ const VerticallyCentered: React.FunctionComponent<TemplateWrapper> = (
                 />
             </Head>
             <div className="contentWrapper">
-                <PageHeader />
+                {/* <PageHeader /> */}
                 <main>{props.children}</main>
             </div>
             <style jsx>
