@@ -7,6 +7,7 @@
  */
 
 import React from 'react'
+import Head from 'next/head'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { MDXProvider } from '@mdx-js/react'
@@ -54,8 +55,18 @@ const Application = ({ Component, pageProps }:AppProps) => {
         }
     }, [])
 
+    const pageTitle = pageProps?.frontMatter?.title ?? 'jem.dev'
+    console.log('what props?', pageProps)
+
     return (
         <PageLayout header={<PageHeader />} footer={<PageFooter />}>
+            <Head>
+                <title>{pageTitle}</title>
+                <meta
+                    name="viewport"
+                    content="initial-scale=1.0, width=device-width"
+                />
+            </Head>
             <MDXProvider components={components}>
                 <Component {...pageProps} />
             </MDXProvider>
