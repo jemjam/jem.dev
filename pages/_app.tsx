@@ -1,33 +1,35 @@
 /**
  * _app.js
- * 
+ *
  * Next.js default application wrapper
  * This template is where global application wrappers or styling
  * can be loaded.
  */
 
 import React from 'react'
+import Head from 'next/head'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { MDXProvider } from '@mdx-js/react'
+import PageLayout from 'components/layout/PageLayout'
 import * as Fathom from 'fathom-client'
 
-import Link from 'next/link'
+import type { AppProps /*, AppContext */ } from 'next/app'
 
-const PUBLIC = process.env.NEXT_PUBLIC_DEMO
+
+import PageHeader from 'components/page/HeadSidebar'
+import PageFooter from 'components/page/ContentFooter'
+import Link from 'next/link'
+import 'components/global-styles.css'
 
 // Some codeblock styles for now...
 import 'highlight.js/styles/shades-of-purple.css'
 
 const components = {
-    wrapper: ({ children, ...props }) => {
-        console.log(children.map((child) => child.props.mdxType))
-        return <>{children}</>
-    },
     a: Link, // Ensures our page navigation is snappy
 }
 
-const Application = ({ Component, pageProps }) => {
+const Application = ({ Component, pageProps }:AppProps) => {
     const router = useRouter()
 
     const FATHOM_SITE_ID = process.env.NEXT_PUBLIC_ANALYTICS_SITE_ID
@@ -35,9 +37,11 @@ const Application = ({ Component, pageProps }) => {
 
     useEffect(() => {
         // Initialize Fathom when the app loads
-        Fathom.load(FATHOM_SITE_ID, {
-            url: FATHOM_URL,
-        })
+        if (FATHOM_SITE_ID !== undefined) {
+            Fathom.load(FATHOM_SITE_ID, {
+                url: FATHOM_URL,
+            })
+        }
 
         function onRouteChangeComplete() {
             Fathom.trackPageview()
@@ -51,10 +55,22 @@ const Application = ({ Component, pageProps }) => {
         }
     }, [])
 
+    const pageTitle = pageProps?.frontMatter?.title ?? 'jem.dev'
+    console.log('what props?', pageProps)
+
     return (
-        <MDXProvider components={components}>
-            <Component {...pageProps} />
-        </MDXProvider>
+        <PageLayout header={<PageHeader />} footer={<PageFooter />}>
+            <Head>
+                <title>{pageTitle}</title>
+                <meta
+                    name="viewport"
+                    content="initial-scale=1.0, width=device-width"
+                />
+            </Head>
+            <MDXProvider components={components}>
+                <Component {...pageProps} />
+            </MDXProvider>
+        </PageLayout>
     )
 }
 
