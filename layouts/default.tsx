@@ -23,12 +23,12 @@ const DefaultLayout: FunctionComponent<DefaultLayoutProp> = ({
                 {frontMatter?.title && <h1>{pageTitle}</h1>}
             </header>
             <div className="contentRegion">{children}</div>
-            <footer className="contentFooter">
-                <hr/>
-                {frontMatter?.date && (
+            {frontMatter?.date && (
+                <footer className="contentFooter">
+                    <hr />
                     <span>posted: {frontMatter?.date ?? '-unknown-'}</span>
-                )}
-            </footer>
+                </footer>
+            )}
         </>
     )
 }
