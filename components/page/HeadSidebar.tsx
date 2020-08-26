@@ -25,6 +25,7 @@ interface MenuMap {
  */
 const menu: MenuMap = {
     'Home': '/',
+    '/whois @jemjam': '/whois',
     '#100DaysOfProjects': '/100days',
 }
 

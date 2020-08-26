@@ -5,24 +5,28 @@ const highlight = require('remark-highlight.js')
 const withMdxEnhanced = require('next-mdx-enhanced')
 
 // Standard (non-enhanced) mdx approach...
-// const withMDX = require('@next/mdx')({
-//     extension: /\.mdx?$/,
-// })
-
-// For now we're using enchance layouts tho...
-const withMdx = withMdxEnhanced({
-    layoutPath: 'layouts',
-    // defaultLayout: true,
-    fileExtensions: ['mdx'],
-    remarkPlugins: [images, emoji, highlight],
-    rehypePlugins: [],
-    extendFrontMatter: {
-        process: (mdxContent, frontMatter) => {},
-        phase: 'prebuild|loader|both',
-    },
+const withMDX = require('@next/mdx')({
+    extension: /\.mdx?$/,
+    options: {
+        remarkPlugins: [images, emoji, highlight],
+        rehypePlugins: [],
+    }
 })
 
-module.exports = withMdx({
+// For now we're using enchance layouts tho...
+// const withMdx = withMdxEnhanced({
+//     layoutPath: 'layouts',
+//     // defaultLayout: true,
+//     fileExtensions: ['mdx'],
+//     remarkPlugins: [images, emoji, highlight],
+//     rehypePlugins: [],
+//     extendFrontMatter: {
+//         process: (mdxContent, frontMatter) => {},
+//         phase: 'prebuild|loader|both',
+//     },
+// })
+
+module.exports = withMDX({
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
         // Note: we provide webpack above so you should not `require` it
         // Perform customizations to webpack config
