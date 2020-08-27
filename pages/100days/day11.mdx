@@ -1,0 +1,74 @@
+import Layout from 'layouts/default'
+
+export default Layout
+
+export const frontMatter = {
+    title: 'Day 11: Nodejs.dev',
+    desc: '',
+    date: '2020-08-26',
+    day: 11,
+}
+
+[#100DaysOfProjects](./)
+
+Today was a productive day where I worked on a variety of projects!
+
+All in my spare time (before and after work) of course: It can be tempting to
+want to review non-work PR's on work time, but I try to be careful to only work
+on OSS or side projects outside of my core work hours. (The one exception I make
+is for group meetings like the website redesign meeting of course.)
+
+## mdx-next-enhanced contribution!
+
+My contribution to `mdx-next-enhanced` was finally accepted and merged this
+morning! There was a request to rebase yesterday afternoon. I only saw it this
+morning before work and spent a couple minutes to update it quickly. A
+maintainer ended up implementing and merging the rebase just before me though.
+
+Either way, we got the fix in: the module should be working with the new version
+of Next.js once folks upgrade to this new major version.
+
+## Theme alignment issues
+
+While I was pushing out my fixes yesterday I noticed that in safari there were
+some issues with the main content region alignment. I'm trying to be clever
+about the vertical alignment: having things vertically aligned to about the
+5/8th mark when content is less than the height of the window. Adding some
+height and adjusting the flex properties makes sure things render correct in all
+my target browsers.
+
+## Theme Colors
+
+I removed the blue/red/yellow coloring that different regions had. Also got rid
+of that funky funny background. It was useful while I was troubleshooting and
+tweaking layout. But otherwise it was probably all way too distracting.
+
+I was kind of into the dark green color scheme I built back around day two or
+three. I'll probably restore that (or something similar) in the next day or so.
+
+## Info Product Challenge
+
+If there's one thing I haven't worked on enough today, it was my
+#infoproductchallenge modules. I have a pretty good outline for the first couple
+of modules that I would want to create. But I'm also wavering on how I want to
+_execute_ everything.
+
+Initially I figured I'd do something of a series of screen casts, but I worry
+that will be too boring if I try to do it by myself. After all - videos about
+how to do video conferencing are probably much more relevant if I can SHOW
+actual conferencing. (Maybe I could find some folks who are interested in
+playing the role of actors for a couple of my videos... Or another approach
+would be to run some actual meetings and record how things are facilitated.)
+
+The question always is what can I get done during the course of the first run of
+this challenge... :sweat_smile:
+
+## Today's Clippings 🍃
+
+-   Morning: quick rebase of my contrib, later merged into `mdx-next-enhanced`
+-   Fixed a bug with the alignment of the content area on safari.
+-   Styling adjustments to the theme: that funky background and coloring was a
+    bit much.
+-   Some review of issues on the nodejs.dev repo, getting ready to join the
+    meeting tomorrow informed
+-   Probably spending too much time on these posts day over day

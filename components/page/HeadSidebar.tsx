@@ -20,13 +20,16 @@ interface MenuMap {
 
 /**
  * MAIN MENU:
- * It's a map of names (to show in the <a>) to their urls (the page 
+ * It's a map of names (to show in the <a>) to their urls (the page
  * to navigate to when you click on the name).
  */
 const menu: MenuMap = {
-    'Home': '/',
-    '/whois @jemjam': '/whois',
+    Home: '/',
+    'About Me': '/whois',
     '#100DaysOfProjects': '/100days',
+    'divider1': '---',
+    'Contact me (twitter)':
+        'https://twitter.com/messages/compose?recipient_id=42684557',
 }
 
 interface menuProps {
@@ -34,11 +37,14 @@ interface menuProps {
 }
 const ShortMenu: React.FunctionComponent<menuProps> = ({ menu = {} }) => (
     <nav>
-        {Object.keys(menu).map((item) => (
-            <Link href={menu[item]}>
-                <a className={styles.pageNavigation}>{item}</a>
-            </Link>
-        ))}
+        {Object.keys(menu).map((item) => {
+            if (menu[item] === '---') return <span className={styles.divider} />
+            return (
+                <Link href={menu[item]}>
+                    <a className={styles.pageNavigation}>{item}</a>
+                </Link>
+            )
+        })}
     </nav>
 )
 
