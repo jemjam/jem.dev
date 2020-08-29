@@ -1,0 +1,40 @@
+import Layout from 'layouts/default'
+
+export default Layout
+
+export const frontMatter = {
+    title: 'Day 13: List Pages on Next.js',
+    desc:
+        'Today I explore listing pages by using the babel import glob module.',
+    date: '2020-08-28',
+    day: 13,
+}
+
+[#100DaysOfProjects](./)
+
+Another notes catchup day: I started by including the day12 notes to cover my
+contributions for yesterday. (I still followed the rules considering I posted to
+twitter about it... I just didn't actually add a page over here until today.)
+
+Wanting a little bit of a break I've decided to scope the new project for today
+as small as possible. I want to look at what it takes to add directory lists or
+pull in post data from more than just one post at a time.
+
+## Directory Listings
+
+When you start loading files directly via the next.js pages api, it can be
+tempting to think about putting all of your posts into some sort of big array
+and then handle rendering markdown remotely. This is a useful approach when you
+need to render mdx from potential remote sources (where enabling imports is
+potentially not feasible) but for a local website or digital garden, this is
+definitely overkill.
+
+### Babel Import Glob to the rescue
+
+As much as it might sound like reading a directory list manually is necessary,
+we can actually use babel to shortcut the process and simply import a glob of
+files.
+
+## Today's Clippings 🍃
+
+-
