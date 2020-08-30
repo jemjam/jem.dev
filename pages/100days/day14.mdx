@@ -1,0 +1,236 @@
+import Layout from 'layouts/default'
+
+import Clippings from 'components/Clippings'
+import PageList from 'components/PageList'
+
+export default Layout
+
+export { getStaticProps } from 'components/getStaticProps/OneHundredDays'
+
+export const frontMatter = {
+    title: 'Day 14: (Finalize) List Pages on Next.js',
+    desc: 'Finalizing the exploration of listing pages from yesterday...',
+    date: '2020-08-29',
+    day: 14,
+}
+
+[#100DaysOfProjects](./)
+
+Today I continued the task I had started on yesterday: looking for the most
+performant way to load a directory or listing of mdx content.
+
+## Babel glob import limitations
+
+So I tried a couple of variations of babel importers that would allow me to
+import a glob of files. My first couple of attempts didn't work great, but some
+of that was likely my own misconfiguration. Still: I ran into various success
+with different modules and how they offered to "glob" that data.
+
+I like to choose modules with a high maintainability score, so after doing a
+little more searching I came upon a babel-macro that would allow exporting.
+Rather than over-rely on non-standard syntax, a macro seemed like a nice way of
+keeping complexity low(er) and hopefully more maintainable.
+
+## Importing a glob from a component
+
+The macro offers a simple syncronous method that we can use to load a glob path,
+and using this from within a component module I was able to successfully grab an
+array of file information. Most specifically: I was looking for access to the
+mdx exports so that I could pull out specific data from frontMatter.
+
+The component that I created initially was a simple module. It only exported a
+single component that showed `<li>`'s for each file (sans index) within a
+hardcoded directory.
+
+```js
+// components/pages/OneHundredDays
+
+import importAll from 'import-all.macro'
+import { parse } from 'path'
+import Link from 'next/link'
+
+const files = importAll.sync('../pages/100days/*.mdx')
+const postsArray = Object.keys(files)
+    .filter((filePath) => {
+        return !filePath.includes('index')
+    })
+    .map((fullPath) => {
+        const pathParts = parse(fullPath)
+        return pathParts.name
+    })
+
+const OneHundredDays = () => {
+    return (
+        <ul>
+            {postsArray.map((postName) => (
+                <li>
+                    <Link href={`/100days/${postName}`}>{postName}</Link>
+                </li>
+            ))}
+        </ul>
+    )
+}
+
+export default OneHundredDays
+```
+
+This technically works! I could import this component and render a list of pages
+with links! Job done?
+
+Nope. Not so fast. I'm not sure if it's obvious from the example code above, but
+this code will actually import the ENTIRE module for each file, and they are ALL
+included as part of the `postsArray` that the component exports. If I wanted to
+simply access front matter, I've now included everything, and any page that
+includes this component will include the weight of ALL linked pages. This might
+not be a huge issue now, but as the site grows in complexity this is growing
+weight added to every page that is completely unnecessary.
+
+### Example Build Results
+
+```sh
+Page                                         Size     First Load JS
+┌ ○ /                                        1.27 kB        32.6 kB
+├   /_app                                    0 B            31.4 kB
+├ ○ /100days                                 161 B          51.6 kB
+├ ○ /100days/day02                           1.71 kB        36.7 kB
+├ ○ /100days/day03                           1.15 kB        36.1 kB
+├ ○ /100days/day04                           608 B          35.6 kB
+├ ○ /100days/day07                           1.18 kB        36.1 kB
+├ ○ /100days/day08                           1.01 kB          36 kB
+├ ○ /100days/day09                           1.85 kB        36.8 kB
+├ ○ /100days/day10                           2.21 kB        37.2 kB
+├ ○ /100days/day11                           2.3 kB         37.3 kB
+├ ○ /100days/day12                           1.43 kB        36.4 kB
+├ ○ /100days/day13                           167 B          51.6 kB
+├ ● /100days/day14                           3.21 kB        38.2 kB
+├ ● /100days/list-of-posts                   1.97 kB        33.3 kB
+├ ○ /404                                     3.43 kB        34.8 kB
+├ ○ /collab-class                            543 B          35.5 kB
+├ ○ /digital-garden                          1.65 kB          33 kB
+└ ○ /whois                                   946 B          35.9 kB
++ First Load JS shared by all                31.4 kB
+  ├ chunks/b468e5533fe7b209d92dca.72a9d7.js  9.66 kB
+  ├ chunks/commons.fad11a.js                 7.65 kB
+  ├ chunks/main.3ff882.js                    7.1 kB
+  ├ chunks/pages/_app.284487.js              6.22 kB
+  ├ chunks/webpack.ccf5ab.js                 751 B
+  └ css/252ec897cdb7ebc39122.css             968 B
+
+```
+
+Here's a few notes from the build results that illustrates some of the problem.
+Note the template for `day13` where I've incluced the `<OneHundredDays />` list
+component and that the first load js is much higher than the surrounding
+modules. We want to be careful here, because this isn't just one time bloat: as
+the list of pages available grows we start to add more and more additional
+content that is unnecessary to that component.
+
+Next.js already offers an api for pages to load `props` from data supplied
+either at build or render time (via `getStaticProps` and `getServerSideProps`).
+A better approach would be to use these api's to load a more focused subset of
+data on a page by page basis.
+
+In the example above: `day14` and `list-of-posts` both include the data via
+`getStaticProps` which allows us to pass ONLY what is needed into the individual
+page templates.
+
+## getStaticProps with MDX
+
+So one useful element of next pages is being able to feed in props via a couple
+of additional module exports. When you render pages with mdx it's not as obvious
+how you would hook into using props like this, but it's actually really useful
+still for loading data ahead of time.
+
+```js
+export { getStaticProps } from 'components/getStaticProps/OneHundredDays'
+```
+
+My next site uses absolute imports (and the `baseUrl` property in tsconfig)
+which allows me to put all of my components into the `/components` directory and
+import them (or any other module) as though it was from that base dir. I then
+create some helper modules in `components/getStaticProps` that
+`export const getStaticProps =` and follow the standard nextjs pattern with that
+data loading function. By then exporting the function from any of the mdx pages,
+I can utilize data-pre-loading at build time.
+
+I've included this in the head of a couple of pages so that I can load the list
+of posts via static props and not have to worry about extra weight landing in
+the pages. The data is loaded via props and therefore available to components
+within the page that want to render based on it (but luckily avoiding the full
+weight of an entire map of posts).
+
+## Connecting static props to components
+
+So now that we have the data fed into the page via props, what can we do to
+actually render that data in a nice component within the page itself? Props are
+one obvious route to pass data into a component that work easily enough.
+
+```js
+<PageList postsArray={props.postsArray} />
+```
+
+Which results in the following:
+
+<PageList postsArray={props.postsArray} />
+
+while keeping our overall page bundle size as minimal as possible, only
+exporting the content that we actually need (not the entire contents of all the
+other posts we haven't done anything with).
+
+## Final Build Results
+
+```sh
+Page                                         Size     First Load JS
+┌ ○ /                                        1.27 kB        32.6 kB
+├   /_app                                    0 B            31.4 kB
+├ ○ /100days                                 163 B          53.4 kB
+├ ○ /100days/day02                           1.71 kB        36.7 kB
+├ ○ /100days/day03                           1.15 kB        36.1 kB
+├ ○ /100days/day04                           609 B          35.6 kB
+├ ○ /100days/day07                           1.18 kB        36.1 kB
+├ ○ /100days/day08                           1.01 kB          36 kB
+├ ○ /100days/day09                           1.85 kB        36.8 kB
+├ ○ /100days/day10                           2.21 kB        37.2 kB
+├ ○ /100days/day11                           2.3 kB         37.3 kB
+├ ○ /100days/day12                           1.43 kB        36.4 kB
+├ ○ /100days/day13                           169 B          53.4 kB
+├ ● /100days/day14                           167 B          40.4 kB
+├ ● /100days/list-of-posts                   1.97 kB        33.3 kB
+├ ○ /404                                     3.43 kB        34.8 kB
+├ ○ /collab-class                            543 B          35.5 kB
+├ ○ /digital-garden                          1.65 kB          33 kB
+└ ○ /whois                                   946 B          35.9 kB
++ First Load JS shared by all                31.4 kB
+  ├ chunks/commons.fad11a.js                 7.65 kB
+  ├ chunks/ea4a7f496fc3a519efc7cb.72a9d7.js  9.66 kB
+  ├ chunks/main.875c4c.js                    7.1 kB
+  ├ chunks/pages/_app.3dd0d8.js              6.22 kB
+  ├ chunks/webpack.ccf5ab.js                 751 B
+  └ css/252ec897cdb7ebc39122.css             968 B
+```
+
+We'll note here that the page `day14` has a listing of all the same posts that
+we include on the `100days` and `100days/day13` templates. But because we're
+smarter about including these props as part of the static generation (and only
+including file names that exist), we keep the overall page and it's dynamic
+components still as light as possible.
+
+## Do you want to explore?
+
+To make it easier on myself to check this revision out in the future, I'm going
+to commit my work in progress code for the day. All of this will be available on
+the `main` branch for today's commit. In the future I'll clean up more of this,
+but I like the idea of keeping the proof of concept for today intact.
+
+<Clippings>
+
+-   Switched to a new clippings component. `lower-romans` list-style-type ftw.
+-   Tried rendering mdx content inside of a component (the new clippings
+    component) and it works just dandy!
+-   Wrapped up my tests from yesterday with a couple of data loading strategies
+    that I feel okay about (documented above)
+-   Discovered "Reflow" plugin for VSC. Now that I'm doing more editing of
+    markdown directly, having some text flow options that hook in with my
+    prettier config is extremely useful...
+
+</Clippings>

@@ -1,15 +1,27 @@
 import React, { FunctionComponent } from 'react'
 import Head from 'next/head'
 
+/**
+ * The default mdx layout:
+ * We use this to set page head, and then also wrap the post
+ * with a header/footer section
+ */
+
 interface DefaultLayoutProp {
     frontMatter: any
+}
+
+export const getStaticProps = (_: any) => {
+    return { props: { pageContext: "extras" } }
 }
 
 const DefaultLayout: FunctionComponent<DefaultLayoutProp> = ({
     children,
     frontMatter,
+    ...otherProps
 }) => {
     const pageTitle = frontMatter?.title ?? 'jem.dev'
+    console.log('default layout otherProps?', otherProps)
     return (
         <>
             <Head>

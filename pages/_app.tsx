@@ -6,7 +6,7 @@
  * can be loaded.
  */
 
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import Head from 'next/head'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -14,7 +14,7 @@ import { MDXProvider } from '@mdx-js/react'
 import PageLayout from 'components/layout/PageLayout'
 import * as Fathom from 'fathom-client'
 
-import type { AppProps /*, AppContext */ } from 'next/app'
+import App, { AppProps } from 'next/app'
 
 
 import PageHeader from 'components/page/HeadSidebar'
@@ -29,7 +29,8 @@ const components = {
     a: Link, // Ensures our page navigation is snappy
 }
 
-const Application = ({ Component, pageProps }:AppProps) => {
+// Type ApplicationProps
+const Application:FunctionComponent<AppProps> = ({ Component, pageProps }) => {
     const router = useRouter()
 
     const FATHOM_SITE_ID = process.env.NEXT_PUBLIC_ANALYTICS_SITE_ID
@@ -56,7 +57,7 @@ const Application = ({ Component, pageProps }:AppProps) => {
     }, [])
 
     const pageTitle = pageProps?.frontMatter?.title ?? 'jem.dev'
-    console.log('what props?', pageProps)
+    console.log('_app.tsx pageProps:', pageProps)
 
     return (
         <PageLayout header={<PageHeader />} footer={<PageFooter />}>

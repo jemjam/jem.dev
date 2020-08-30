@@ -1,0 +1,12 @@
+
+.clippings-heading::after {
+  content: "🍃";
+  display: "inline-block";
+  margin-left: 1ex;
+}
+
+.clippings {
+  :global(li) {
+    list-style-type: lower-roman;
+  }
+}
