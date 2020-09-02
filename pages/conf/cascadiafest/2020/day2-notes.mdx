@@ -1,0 +1,95 @@
+# Cascadia Day 02
+
+Heroku created a bunch of open source tools to help facilitate the conference.
+
+(side note: cassidoo recommended this keep to someone and I just wanted to keep
+note of it:
+[ZSA Moonlander: Next-gen Ergonomics | zsa.io | Store](https://www.zsa.io/moonlander/))
+
+## Evan Tahler
+
+_How I learned to Stop Worrying and Let the Robot Publish to NPM_
+
+-   Lots of care to ensure this wasn’t just a zoom call
+-   Lots of quick releases in quick succession probably a sign something went
+    wrong
+-   NPM flow (vs git flow) takes metaphors from both gitflow and ci/cd
+    [image:AE9B4FC2-1E3B-4A90-A8DB-0673D427B8F9-1646-00008E89C0D48620/Screen
+    Shot 2020-09-02 at 09.36.11 .png]
+-   `npx cascadiajs` vs `npx cascadiajs@next` _ npm packages have BOTH semver
+    number and tag identifiers. _ default tag is `latest`, can tag
+-   .npmignore vs .gitignore
+-   get ci robot to publish code for us _ npm version command to set version
+    (`[no ci]`) _ grant ci access to npm _ push to npm _ push to git
+-   need a human still to trigger version changes (or semantic release)
+-   don’t be afraid to make a tonne of npm packages
+-   QA: \* _how do you know if something is ready to share_ _ just learn in the
+    open, get started with low risk _ thought publishing to npm was high risk,
+    but it’s really not \* low risk: can move tags around if you need to
+
+Chat commentary: Brenden (Organizer) [He/him] Saw a question about some of the
+tooling to help with npm flow. Check out semantic-release to help automate some
+of the process https://github.com/semantic-release/semantic-release
+
+## Tianyu Pu
+
+_The Zen of Git_
+
+-   Joke poem that makes light of git’s difficulty
+-   touching on graph theory
+-   git is a directed graph
+-   (from chat: Anyone know if there is an awesome resource that describes all
+    data structures in such an awesome (and/or fun/visual) way?) _
+    [VisuAlgo - visualising data structures and algorithms through animation](https://visualgo.net/en)
+    _ https://medium.com/basecs _ and here’s a good intro for DAGs in git:
+    [Git for Computer Scientists](https://eagain.net/articles/git-for-computer-scientists/)
+    _
+    [Grokking Algorithms: An illustrated guide for programmers and other curious people: Bhargava, Aditya: 4708364241294: Amazon.com: Books](#) \*
+    Also, for sorting algoritms with dance:
+    https://www.youtube.com/user/AlgoRythmics/videos
+-   From chat: Another cool way to understand how git stores information is to
+    play with GitHub’s GraphQL API.
+-   Iterating through example of how git works, generating blobs with headers
+    and hashes
+-   signpost for commits (branch name) taken along with you as you add commits
+    to a tree
+-   HEAD tells you “where you are”. usually points at a branch, works like a
+    branch. literally a file that tells you branch or commit name
+-   what if you have two branches on same commit? head tells you which.
+-   tags just stay at a commit. also remote branches. just meta data on the
+    graph (references as opposed to “objects on the graph”)
+-   how does a merge work? how does rebase work? (demonstrated example)
+-   from chat: when talking through ‘fun’ scenarios in git with teammates, I
+    find a picture is helpful. Found this (interactive) tool recently which lets
+    you recreate specific scenarios to talk through.
+    https://git-school.github.io/visualizing-git/#cherry-pick
+-   checkout: can move around in time or on graph
+-   ✨this talk needs to be watched again (and again)✨
+
+## Scott Ammon
+
+_Musical Creativity in the Browser_
+
+-   Midi: Musical instrument digital interface \* doesn’t transmit audio! just
+    the physical actions
+-   web midi api: low level interface, incl data key with physical action.
+-   show an example of sockets over server less (with the caveat that
+    instruments could be received out of order)
+-   really cool visualization attached to the notes played
+-   https://tonejs.github.io/
+-   QA discussion notes from chat: _ EWI!
+    https://www.youtube.com/watch?v=5u1GS4R_EfI _ Steve Kinney’s talk from
+    SeattleJS a few years ago used his lib to make more “human” music interfaces
+    easier: https://github.com/stevekinney/octavian
+-   Thank you all!! Here are some links: _
+    https://speakerdeck.com/scottammon/musical-creativity-in-the-browser
+    (slightly less exciting without the videos…) _
+    https://www.linkedin.com/in/scottammon/ _ https://github.com/scott-ammon _
+    https://www.npmjs.com/package/web-midi-hooks (try and it and let me know
+    what's wrong with it and we can improve it :slightly_smiling_face: )
+
+---
+
+## Morning break
+
+---
