@@ -6,6 +6,7 @@ interface ListProps {
 }
 
 const ListOfPages: FunctionComponent<ListProps> = ({ postsArray }) => {
+    console.log('posts array?', postsArray)
     return (
         <ul>
             {postsArray.map((postName) => (

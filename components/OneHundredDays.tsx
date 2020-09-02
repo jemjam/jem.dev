@@ -15,7 +15,7 @@ const OneHundredDays = () => {
         <>
             <h1>Experimental page list component</h1>
             <ul>
-              {postsArray.map(postName => (<li><Link href={`/100days/${postName}`}>{postName}</Link></li>))}
+              {postsArray.map(postName => (<li>ok<Link href={`/100days/${postName}`}>{postName}</Link></li>))}
             </ul>
         </>
     )
