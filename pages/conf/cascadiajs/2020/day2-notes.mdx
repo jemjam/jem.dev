@@ -1,0 +1,317 @@
+# Cascadia Day 02
+
+Heroku created a bunch of open source tools to help facilitate the conference.
+[https://github.com/fostive/emote-widget](https://github.com/fostive/emote-widget)
+[fostive/emote-widget](https://github.com/fostive/emote-widget)
+
+[fostive/what-is-fostive](https://github.com/fostive/what-is-fostive) Start
+here: what is FOSTIVE? Contribute to fostive/what-is-fostive development by
+creating an account on GitHub.
+
+(side note: cassidoo recommended this keep to someone and I just wanted to keep
+note of it:
+[ZSA Moonlander: Next-gen Ergonomics | zsa.io | Store](https://www.zsa.io/moonlander/))
+
+---
+
+🧑‍🏫 THE TALKS
+
+---
+
+## Evan Tahler
+
+_How I learned to Stop Worrying and Let the Robot Publish to NPM_
+
+-   Lots of care to ensure this wasn’t just a zoom call
+-   Lots of quick releases in quick succession probably a sign something went
+    wrong
+-   NPM flow (vs git flow) takes metaphors from both gitflow and ci/cd
+    [image:AE9B4FC2-1E3B-4A90-A8DB-0673D427B8F9-1646-00008E89C0D48620/Screen
+    Shot 2020-09-02 at 09.36.11 .png]
+-   `npx cascadiajs` vs `npx cascadiajs@next` _ npm packages have BOTH semver
+    number and tag identifiers. _ default tag is `latest`, can tag
+-   .npmignore vs .gitignore
+-   get ci robot to publish code for us _ npm version command to set version
+    (`[no ci]`) _ grant ci access to npm _ push to npm _ push to git
+-   need a human still to trigger version changes (or semantic release)
+-   don’t be afraid to make a tonne of npm packages
+-   QA: \* _how do you know if something is ready to share_ _ just learn in the
+    open, get started with low risk _ thought publishing to npm was high risk,
+    but it’s really not \* low risk: can move tags around if you need to
+
+Chat commentary: Brenden (Organizer) [He/him] Saw a question about some of the
+tooling to help with npm flow. Check out semantic-release to help automate some
+of the process https://github.com/semantic-release/semantic-release
+
+## Tianyu Pu
+
+_The Zen of Git_
+
+-   Joke poem that makes light of git’s difficulty
+-   touching on graph theory
+-   git is a directed graph
+-   (from chat: Anyone know if there is an awesome resource that describes all
+    data structures in such an awesome (and/or fun/visual) way?) _
+    [VisuAlgo - visualising data structures and algorithms through animation](https://visualgo.net/en)
+    _ https://medium.com/basecs _ and here’s a good intro for DAGs in git:
+    [Git for Computer Scientists](https://eagain.net/articles/git-for-computer-scientists/)
+    _
+    [Grokking Algorithms: An illustrated guide for programmers and other curious people: Bhargava, Aditya: 4708364241294: Amazon.com: Books](https://www.amazon.com/Grokking-Algorithms-illustrated-programmers-curious/dp/1617292230/ref=sr_1_1?crid=3NYDKBQBC7XT0&dchild=1&keywords=data+structures+and+algorithms+illustrated&qid=1599066222&s=books&sprefix=data+structuer%2Cstripbooks%2C206&sr=1-1) \*
+    Also, for sorting algoritms with dance:
+    https://www.youtube.com/user/AlgoRythmics/videos
+-   From chat: Another cool way to understand how git stores information is to
+    play with GitHub’s GraphQL API.
+-   Iterating through example of how git works, generating blobs with headers
+    and hashes
+-   signpost for commits (branch name) taken along with you as you add commits
+    to a tree
+-   HEAD tells you “where you are”. usually points at a branch, works like a
+    branch. literally a file that tells you branch or commit name
+-   what if you have two branches on same commit? head tells you which.
+-   tags just stay at a commit. also remote branches. just meta data on the
+    graph (references as opposed to “objects on the graph”)
+-   how does a merge work? how does rebase work? (demonstrated example)
+-   from chat: when talking through ‘fun’ scenarios in git with teammates, I
+    find a picture is helpful. Found this (interactive) tool recently which lets
+    you recreate specific scenarios to talk through.
+    https://git-school.github.io/visualizing-git/#cherry-pick
+-   checkout: can move around in time or on graph
+-   ✨this talk needs to be watched again (and again)✨
+
+## Scott Ammon
+
+_Musical Creativity in the Browser_
+
+-   Midi: Musical instrument digital interface \* doesn’t transmit audio! just
+    the physical actions
+-   web midi api: low level interface, incl data key with physical action.
+-   show an example of sockets over server less (with the caveat that
+    instruments could be received out of order)
+-   really cool visualization attached to the notes played
+-   https://tonejs.github.io/
+-   QA discussion notes from chat: _ EWI!
+    https://www.youtube.com/watch?v=5u1GS4R_EfI _ Steve Kinney’s talk from
+    SeattleJS a few years ago used his lib to make more “human” music interfaces
+    easier: https://github.com/stevekinney/octavian
+-   Thank you all!! Here are some links: _
+    https://speakerdeck.com/scottammon/musical-creativity-in-the-browser
+    (slightly less exciting without the videos…) _
+    https://www.linkedin.com/in/scottammon/ _ https://github.com/scott-ammon _
+    https://www.npmjs.com/package/web-midi-hooks (try and it and let me know
+    what's wrong with it and we can improve it :slightly_smiling_face: )
+
+---
+
+🥐 Morning break
+
+---
+
+## Pantelis Kalogiros
+
+[Complex Geometry in HTML! A story of Constrained Creativity](https://2020.cascadiajs.com/speakers/pantelis-kalogiros)
+
+Hey everybody!! If you want to see the finished game/tech demo of my talk click
+here -> https://pantel.is/projects/css3d/ (rendering is all in css3d/html, of
+course a ton of vanilla js is used too for the actual gameplay) (edited)
+
+-   Constrained creativity: constraints breed creativity \* (short story
+    “Computer, did we bring batteries? Computer?” 😅 )
+-   Some amazing demos of putting components into perspective, rendering full 3d
+    scenes (my notes would not do it justice)
+-   Are there libraries that make this easier? _ The math hasn’t changed _ Can
+    use Three.js: will render without web-gl. SVG/Canvas and ascii rendering…
+-   are there perf limitations: _ can have 700-800 faces (elements), textures
+    can add up _ there are tricks you can do to avoid rendering certain elements
+    (hide elements out of sight with display: none, using lower res textures)
+
+## Amber Hoak
+
+[SVG, Canvas, and WebGL: The Power, the Beauty, and the Cost](https://2020.cascadiajs.com/speakers/amber-hoak)
+
+-   people are more likely to remember images than words (picture superiority)
+-   data visualization == communication \* (flatten the curve chart being a good
+    example)
+-   Wikiverse: http://wikiverse.io/
+-   [GitHub - ahoak/pixi-svg-visualization: Pixi.js v5 and SVG using D3.js for example of hybrid renderers in data visualizations](https://github.com/ahoak/pixi-svg-visualization)
+-   Showing a demo of various renderers (circles moving across the screen)
+-   Amber shared links and talk timings in the public slack as we watched
+-   [10 Things Everyone Hates About You](https://pudding.cool/2017/12/hater/)
+-   I am going over this section pretty quickly but in the benchmark code you
+    can see how you can use this for real:
+    https://github.com/ahoak/pixi-svg-visualization/blob/main/src/components/Chart/SVG/BeeSwarmSVG.tsx
+-   Canvas 2d Graphics API:
+    https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
+-   Some really interesting proof of concept / demos
+-   Pixi.js (2d rendering) and Three.js (3d rendering)
+-   Pixi BunnyMark: a crude perf check
+-   SandDance
+-   Shirley Wu did a really cool livestream with Jason Lengstorf here, highly
+    recommend:
+    https://www.learnwithjason.dev/generative-data-visualization-part-3 (edited)
+-   Nature 150 years of academic journals:
+    https://www.nature.com/immersive/d41586-019-03165-4/index.html
+-   This is a visual walkthrough of this implementation:
+    https://github.com/ahoak/pixi-svg-visualization/blob/main/src/components/Chart/Pixi/PixiRenderer.ts
+-   For non-data visualization uses, we can mix HTML and webGL together to
+    create interesting effects such as this “distortion effect”.
+    http://taotajima.jp/ & http://robinmastromarino.com/
+-   How can we make them accessible: \* colors / keyboard navigation are great
+    examples
+-   Cutting edge of 3d graphics in browser: WebGPU
+    [Next-generation 3D Graphics on the Web | WebKit](https://webkit.org/blog/7380/next-generation-3d-graphics-on-the-web/%0A)
+-   start with svg
+
+## Rahat Chowdhury
+
+[Building better communities with mental health support](https://2020.cascadiajs.com/speakers/rahat-chowdhury)
+
+-   @rahatcodes
+-   200million hours lost annually to depression
+-   OSMI: Open Source Mental Illness \* some mental health resources: for
+    employees, for workplace
+-   bootcamps romanticize burnout culture \* need to put in extra work to get
+    better
+-   hustle culture
+-   tech events \* don’t focus on booze
+-   provide different opportunities for people to network (not just drinking
+    events, not maybe just in person events)
+-   The pacman rule: Eric Holsher: don’t close the circle
+-   From Slack: Paying attention to Reactadelphia and [JS.LA](http://js.la/) on
+    how to level up my meetup’s remote experience.
+
+---
+
+🥪 Lunch 🌮
+
+---
+
+## Kristofer Joseph
+
+[You Might Not Need a Build Step](https://2020.cascadiajs.com/speakers/kj)
+
+-   mo tooling mo problems
+-   from begin.com
+-   good examples of building apps with pure js
+-   why do we bundle, transpile? the reasoning is less relevant these days
+
+## April Speight
+
+[My Assistant Misty](https://2020.cascadiajs.com/speakers/april-speight)
+
+-   ROBOTS
+-   Building a robot digital assistance
+-   misty: multiplatform robot mistyrobotics.com
+-   skillrunner / command centre to manage the robot
+-   showcasing some examples of how to work with the robot
+-   are there other platforms: yea some exist: other ways to get started
+    building too
+-   twilio autopilot for ai speech
+-   link in slack: misty's interaction interface reminds me a lot of johnny-five
+    : http://johnny-five.io/
+
+## Myriam E Walden-Duarte
+
+[Relax, it’s IoTea Time!](https://2020.cascadiajs.com/speakers/myriam-walden-duarte)
+
+-   myriamwd.com
+-   used fitbit to track sleep!
+-   an example project with a button turned on over the internet.
+-   [LED Iot-User](https://myriamwd.github.io/iot-user/)
+
+---
+
+☕️ Afternoon Break
+
+---
+
+## Dan McKeon
+
+[How I Graduated from React to Vanilla JavaScript](https://2020.cascadiajs.com/speakers/dan-mckeon)
+
+-   Talking about his process going from react back toward vanilla js
+-   Core dom api’s like querySelector
+-   addEventListener but forgetting to remove it and ending up with a memory
+    leak
+-   discussion of uses for a11y
+-   Resources: _ [mdn web docs](https://developer.mozilla.org/en-US/) _
+    [google web fundamentals](https://developers.google.com/web/fundamentals) \*
+    [aria authoring practices](https://www.w3.org/TR/wai-aria-practices-1.1/)
+
+> jQuery bundled a few important concepts together that really made it sing: DOM
+> selectors, chainable utility interface, plugin ecosystem, and reusable common
+> factory pattern… we now have the advantage of using each of these features
+> independently (querySeleector, underscore/lodash, npm/esm, ESNext+): it’s one
+> of the best stories where its success lead to its own demise [James Vivian
+> [he/him]]
+
+> i swear if i got a dollar for every \$ i had to write i’d have enough to buy a
+> couple avocado toasts by now [melody (they/them)
+
+> React to vanilla: Looks like someone did it… and documented it.
+> [https://medium.com/hackernoon/how-i-converted-my-react-app-to-vanillajs-and-whether-or-not-it-was-a-terrible-idea-4b14b1b2faff](https://medium.com/hackernoon/how-i-converted-my-react-app-to-vanillajs-and-whether-or-not-it-was-a-terrible-idea-4b14b1b2faff)
+> cole [he/him]
+
+## Rachelle Rathbone
+
+[Oh Sweet, Gif](https://2020.cascadiajs.com/speakers/rachelle-rathbone) ⚡
+
+-   “can this be said with gif?”
+-   photosensitive epilepsy: can trigger, not necessarily with one image (but
+    many or large images)
+-   how do you make gifs accessible?
+-   wcag 2.2.2 pause, stop, hide (level a) guideline
+-   implemented a feature for gif-autoplaying in a little web app (gific)
+-   hashtag-accessibilityfirst development
+
+> Really like this article by Eric Bailey on prefers-reduced-motion (which
+> doesn’t necessarily mean just stop all motion):
+> https://css-tricks.com/revisiting-prefers-reduced-motion-the-reduced-motion-media-query/
+> Diane Ko:
+
+> this is a handy technique for pausing-by-default:
+> https://css-tricks.com/pause-gif-details-summary/ jdsteinbach
+
+> “It’s easy [for web devs] to discover issues for all users, but harder finding
+> issues for /some/ users”
+
+## Fred K Schott
+
+[Snowpack, Webpack and the Third Age of JavaScript](https://2020.cascadiajs.com/speakers/fred-k-schott)
+
+-   July 17th 1936: first nbc live broadcast
+-   talking about how first news broadcast did it just like a radio broadcast:
+    no knowledge of the medium yet
+-   there is an analog here in how cascadia has embraced this distributed format
+    this year
+-   “third age of javascript” [@swyx](https://www.swyx.io/writing/js-third-age/)
+-   affiliated with snowpack, pika, skypack
+
+> The third age is about clearing away legacy assumptions and collapising layers
+> of tooling ~ Shawn Wang (swyx)
+
+-   ESM is the future
+
+> It’s interesting to use google trends to compare frameworks over time:
+> https://trends.google.com/trends/explore?date=all&geo=US&q=%2Fg%2F11c6w0ddw9,%2Fm%2F0268gyp,React,%2Fm%2F0bbxf89
+> Jeff Alexander
+
+> Great podcast episode —> must listen :) —>
+> [https://changelog.com/jsparty/137](https://changelog.com/jsparty/137) Austin
+> Turner
+
+[Skypack](https://www.skypack.dev/): everything on npm delivered to your
+browser. https://github.com/evanw/esbuild esbuild (edited)
+
+---
+
+## Carter and Jessica Closing
+
+-   Made a choice not to use Remo / Hop.in (directly anyways)
+-   Believe their are pillars of cascadia, feeling the warmth of audience
+-   Emotes feature was a way for audience interaction
+-   Having proper captioning: we do this already
+-   “we’re web developers: this conference is about the web” empowered idea of
+    building things modular, distribute work
+-   rambly: digital 8bit world for discussion
+-   remo: being able to sit down at tables with folks
+-   “You can’t collect Pokemon if you’re a jerk” ⬅ I need to cross-stitch this

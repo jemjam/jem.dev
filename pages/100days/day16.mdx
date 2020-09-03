@@ -1,0 +1,69 @@
+import Layout from 'layouts/default'
+
+import Clippings from 'components/Clippings'
+
+export default Layout
+
+export const frontMatter = {
+    title: "Cascadia's closing...",
+    desc: 'Online conference day 02',
+    date: '2020-09-02',
+    day: 16,
+}
+
+Today was my second (and last) day of Cascadia 2020. My main focus for the day
+was tuning in and capturing key notes or links.
+
+## Closing conference thoughts
+
+I also decided to move all my conference notes into a designated space. I figure
+I'll share notes from conferences again in the future, so I've opted to create a
+little space under `/conf` to store conference notes and retrospectives.
+Cascadia notes specifically are in
+[/conf/cascadiajs/2020](/conf/cascadiajs/2020).
+
+As I've been posting day over day, I've found there's still a little bit of
+overhead with how I've built the site so far. (Having to import default layouts
+isn't ideal and I think I can just use the default `wrapper` to provide
+_default_ layout). Plus I want to get proper social media "cards", get web
+mentions working, actually add some of the post metadata, actually add some more
+styling...
+
+## No Info Product (temporarily)
+
+So much to do in fact, that I've had to admit that I don't think I'm going to
+finish my info project (at least not before Friday). That work isn't lost, and I
+haven't given up, but it's not my priority or stress to try to finish it _this
+week_. I'm going to focus instead on fortifying some of this web property over
+the next couple of days/weeks first, then I'll give it a second shot once I have
+a space I feel ~~good~~ _slightly better_ about sending folks to. :sweat_smile:
+
+## Top of mind stuff to address:
+
+-   [ ] Social media cards so when I share links it's not so plain
+-   [ ] Styling. Oh boy do I need some spacing/theming.
+-   [ ] Curate the homepage / root pages a little more (put something more
+        relevant than just a simple header)
+-   [ ] Shouldn't _have to_ import layouts (allow the `wrapper` to take care of
+        defaults)
+-   [ ] But definitely still allow layouts to be overridden.
+
+I'm still figuring out the best combination of modules to facilitate all of
+this, but I think once I address these couple of use cases I'll have a pretty
+good understanding of how to feed data into an mdx based page.
+
+<Clippings>
+
+-   Took lots of notes during the conference day two
+-   And since I've done this one day, I have a better process for importing
+-   Thinking longer term about posting conference notes directly, I'd like to
+    have a spot for them to go. Thinking **too much** about long term url
+    structure, I settled on `conf/cascadiajs/2020` as a spot to keep the notes
+    (so I'm not just linking to `day15/16`)
+-   Fixed one issue with the site build so my babel imports didn't cache
+    strangely, and updated few templates and links
+-   Drafted a few ideas (just above) about what some of my next garden add-ons
+    should be focused toward. It's a garden, so this is always organic, but
+    those seem like worthy add-ons.
+
+</Clippings>

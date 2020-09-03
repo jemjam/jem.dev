@@ -1,6 +1,10 @@
 import importAll from 'import-all.macro'
 import { parse } from 'path'
 
+/**
+ * List out all of the posts available in the 100days directory
+ */
+
 export const getStaticProps = (_: any) => {
     const files = importAll.sync('../../pages/100days/*.mdx')
     const postsArray = Object.keys(files)

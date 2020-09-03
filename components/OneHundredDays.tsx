@@ -13,9 +13,9 @@ const postsArray = Object.keys(files).filter(filePath => {
 const OneHundredDays = () => {
     return (
         <>
-            <h1>Experimental page list component</h1>
+            <h2>List of pages</h2>
             <ul>
-              {postsArray.map(postName => (<li>ok<Link href={`/100days/${postName}`}>{postName}</Link></li>))}
+              {postsArray.map(postName => (<li><Link href={`/100days/${postName}`}>{postName}</Link></li>))}
             </ul>
         </>
     )
