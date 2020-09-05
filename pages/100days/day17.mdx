@@ -1,0 +1,108 @@
+import Clippings from 'components/Clippings'
+
+export const frontMatter = {
+    title: '555 Site Improvements',
+    desc:
+        "An open day at work meant I got to explore some of the wishlist items I've had listed (from day16)",
+    date: '2020-09-04',
+    day: 17,
+}
+
+Today was a 555 project day at work. These come regularly on the first friday of
+the month. The idea is that you're allowed to work on just about anything so
+long as you're learning something new. And considering I've been working on
+building this project, there's plenty of opportunities to learn new things with
+regards to general site implementation. I spent the day working through
+improving elements of this default mdx layout, along with exploring how I could
+add `og-image` tags properly.
+
+## Info Product Challenge
+
+Also: it's officially Friday, and the end of our initial round of the "Info
+Product Challenge". I noted on [`day16`](./day16), I haven't had the energy to
+create my own product on top of all the other personal / open source work I've
+been doing. I'm excited that the site is developing, that I've been writing
+more, that I've had the opportunity to push the odd commit to some OSS. But I'd
+like to keep doing more, and trying to create a product (prematurely) is
+probably the wrong thing for me to focus on right away.
+
+That said: a bunch of the other friends that set out to create products at the
+same time as I did actually managed to complete and launch theirs. You should
+check out the following:
+
+-   [@jsjoeio](https://twitter.com/jsjoeio) created
+    [vimforvscode.com](https://vimforvscode.com/)
+-   [@KatieKodes](https://twitter.com/KatieKodes) created
+    [" Intro to XML, JSON, & YAML: the book"](https://katiekodes.com/intro-xml-json-yaml-book/)
+-   [@jh3yy](https://twitter.com/jh3yy/) created
+    [Moving Things with CSS](https://gumroad.com/l/move-things-with-css)
+
+This was only round one, and I probably forgot or missed some. As more of us
+create I'll continue to share these out. (I'll also try to add some notes about
+my experience with the project the first time, and why I think each of these are
+worth your time: coming in a post this weekend.)
+
+## Plop your new files in place
+
+One last thing: I set up plop for my initial mdx templates. Day over day I've
+been creating these templates (with `frontMatter` at the top, including some
+default values). Copying and modifying the file (or making one from scratch)
+every day was getting a little old, so I added plop so I could shortcut my way
+to new posts every day.
+
+```zsh
+$ yarn plop 100days
+yarn run v1.22.4
+$ plop 100days
+? Date of this entry 2020/09/04
+? #100Days number 17
+? Post title (h1) 555 Site Improvements
+? Post description (summary) Today I worked on...
+✔  ++ /pages/100days/day17.mdx
+✨  Done in 17.06s.
+```
+
+This makes it super easy to initiate a new post. I'll build on this if there are
+other templates (such as components/layouts) that I want to be able to scaffold
+out quickly.
+
+## Long Weekend
+
+It's labour day long weekend! Three days off, I've got lots of time for side
+projects. However, I need to commit some of that time to pushing some of the
+nodejs.dev projects forward as well. Either way: I'm optimistic about some of
+what I hope to get done...
+
+<Clippings>
+
+-   Began investigating social media cards
+    -   These are actually `og-image`'s, and I was able to quickly uncover
+        several resources on the topic
+    -   Notably, @swyx has a
+        [great primer with five different approaches](https://www.swyx.io/writing/jamstack-og-images/)
+    -   @chrisbiscardi has a really good egghead playlist that covers
+        [Building an OpenGraph image generation API with Cloudinary, Netlify Functions, and React](https://egghead.io/playlists/building-an-opengraph-image-generation-api-with-cloudinary-netlify-functions-and-react-914e)
+    -   Some of the options are good for gatsby, others for next (vercel has an
+        example "Open Graph Image as a Service" that you can easily clone and
+        modify as necessary).
+    -   If you end up building your own cloud function, it typically involves
+        headless chrome taking a screenshot of some rendered page template
+        modified via query params
+    -   I didn't want to spend too much time "in the weeds" with getting into
+        heavily customizing my own solution, so the module Jason Lengstorf wrote
+        to generate these images with cloudinary seems like a good solution for
+        getting something going sooner than later.
+-   Set the `wrapper` component, allowing for default mdx templates
+-   Refactored the page templates to better accommodate the idea of default
+    layouts
+-   Fixed all of the existing templates, by removing the extra import default
+    imports from just about everything (that was no longer necessary with the
+    default wrapper).
+-   Styling fixes!
+    -   Removed unused styles
+    -   Added some line-height to _everything_ so things don't feel so crunched
+        up.
+    -   Styling `<code>` elements now for more visual representation
+-   `plop` initial set up so I can quickly scaffold 100days posts
+
+</Clippings>
