@@ -1,24 +1,5 @@
 /*
-.with-sidebar {
-  overflow: hidden;
-}
-
-.with-sidebar > * {
-  display: flex;
-  flex-wrap: wrap;
-  margin: calc(var(--s1) / 2 * -1);
-}
-
-.with-sidebar > * > * {
-  margin: calc(var(--s1) / 2);
-  flex-grow: 1;
-}
-
-.with-sidebar > * > :last-child {
-  flex-basis: 0;
-  flex-grow: 999;
-  min-width: calc(50% - var(--s1));
-}
+    Wrappers
 */
 
 .pageWrapper {
@@ -38,19 +19,19 @@
     }
 }
 
-.pageHeader {
-    background-color: black;
-    color: white;
-    display: flex;
-    flex-grow: 1;
-}
-
 .pageContentWrapper {
     min-width: calc(((1 / 1.618) * 100%) - 1rem);
     flex-basis: 0;
     flex-grow: 999;
     display: flex;
     flex-direction: column;
+}
+
+.pageHeader {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-grow: 1;
 }
 
 .pageContent {

@@ -7,30 +7,30 @@
  */
 
 import React, { FunctionComponent } from 'react'
-import Head from 'next/head'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { MDXProvider } from '@mdx-js/react'
-import PageLayout from 'components/layout/PageLayout'
 import * as Fathom from 'fathom-client'
 
+import DefaultLayout from 'layouts/default'
 import App, { AppProps } from 'next/app'
 
-
+import PageLayout from 'components/page'
 import PageHeader from 'components/page/HeadSidebar'
 import PageFooter from 'components/page/ContentFooter'
 import Link from 'next/link'
-import 'components/global-styles.css'
+import 'components/global-styles.scss'
 
 // Some codeblock styles for now...
 import 'highlight.js/styles/shades-of-purple.css'
 
 const components = {
     a: Link, // Ensures our page navigation is snappy
+    wrapper: DefaultLayout,
 }
 
 // Type ApplicationProps
-const Application:FunctionComponent<AppProps> = ({ Component, pageProps }) => {
+const Application: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
     const router = useRouter()
 
     const FATHOM_SITE_ID = process.env.NEXT_PUBLIC_ANALYTICS_SITE_ID
@@ -61,13 +61,6 @@ const Application:FunctionComponent<AppProps> = ({ Component, pageProps }) => {
 
     return (
         <PageLayout header={<PageHeader />} footer={<PageFooter />}>
-            <Head>
-                <title>{pageTitle}</title>
-                <meta
-                    name="viewport"
-                    content="initial-scale=1.0, width=device-width"
-                />
-            </Head>
             <MDXProvider components={components}>
                 <Component {...pageProps} />
             </MDXProvider>

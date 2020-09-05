@@ -1,0 +1,33 @@
+/* Page layout uses 100% height... */
+html,
+body,
+#__next {
+    height: 100%;
+}
+
+:root {
+    --s1: 1rem;
+    --measure: 60ch;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.45;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+code {
+    background-color: lightgray;
+    padding: 0.2ex 0.8ex;
+    border-radius: 1ex;
+    display: inline-block;
+}
+
+p {
+  margin: 1.5rem 0;
+}
