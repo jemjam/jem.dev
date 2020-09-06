@@ -16,7 +16,7 @@ import DefaultLayout from 'layouts/default'
 import App, { AppProps } from 'next/app'
 
 import PageLayout from 'components/page'
-import PageHeader from 'components/page/HeadSidebar'
+import SiteHeader from 'components/site/Header'
 import PageFooter from 'components/page/ContentFooter'
 import Link from 'next/link'
 import 'components/global-styles.scss'
@@ -60,7 +60,7 @@ const Application: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
     console.log('_app.tsx pageProps:', pageProps)
 
     return (
-        <PageLayout header={<PageHeader />} footer={<PageFooter />}>
+        <PageLayout header={<SiteHeader />} footer={<PageFooter />}>
             <MDXProvider components={components}>
                 <Component {...pageProps} />
             </MDXProvider>

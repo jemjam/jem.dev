@@ -1,0 +1,82 @@
+import Clippings from 'components/Clippings'
+
+export const frontMatter = {
+    title: 'CSS & various refactors',
+    desc:
+        'Adding little extras to css as I figure out where and how I want the main files to be laid out.',
+    date: '2020-09-05',
+    day: 18,
+}
+
+Adding little extras to css as I figure out where and how I want the main files
+to be laid out. I've been shifting some of the components around a little bit
+and forming some thoughts around potentially a handful of top level site folders
+that should be considered, including:
+
+-   `components`: A collection of all the individual page components that can be
+    composed and make up the site
+-   `layouts`: Layouts can be added to mdx pages to toggle the **wrapper**
+    component. If we treat all layouts as a collection of composed components
+    (with a content area) then we can mix and match and facilitate all sorts of
+    strange page structures.
+-   `pages`: And then pages are just documents with potentially additional
+    metadata. Pages can set a wrapper layout, or import components to be used
+    within the body of the page.
+
+I've also been thinking about the layout of pages in general. If you allow for
+individual pages to have their own layouts, it's likely that you still want
+elements of the site (header/footers) to wrap those unique layouts. But
+individual pages might also have their own (header/footer). A "site" is going to
+have many "pages" within it, but the root level branding is usually still "site
+wide". (This is mostly just me noting that I need to refactor some of the
+components to make things more obvious.)
+
+## Expectations
+
+One funny element to trying to get a little bit done day over day: I find that I
+can work for hours on elements and still feel like I haven't managed to complete
+them properly. This leads to me feeling like I'm not getting anything done.
+Which is absolutely silly, because when I look back at the commit for today I'm
+definitely glad to be making progress. (The clippings below have a few points I
+would have written off if not for striving to document some of today's actions.)
+
+Being open is really challenging for me. There's a little voice in the back of
+my head: "it's not as much progress as you could have made; there are so many
+projects you could have pushed forward if only you could have done just a little
+more... nobody cares about this incomplete increment"
+
+I almost didn't want to commit/push and get today's increment up. Mostly just
+because the progress doesn't feel substantial or worth commenting on.
+
+But the show must go on. Trying to work in the open means putting this out
+there, and just iterating. And it may be a work in progress, but there _is
+progress_ day over day. That's what I'm focusing on: the baby steps, the
+individual increments that make things even just a little better than they were
+the day before.
+
+Both in my code, and in life...
+
+## TODO:
+
+-   [ ] I'd like to have `< prev` and `next >` links somewhere on these pages,
+        connecting between each of the days.
+-   [ ] Need to get dark and light modes going again, it's not great to have
+        light theme for folks wanting dark mode
+-   [ ] Fonts: I want to keep the page load light, but I'm wondering if maybe
+        something easy like Open Sans is worth the effort? (Or if nothing else,
+        I should tune the system font stack a bit so I'm not just using
+        `sans-serif`)
+
+<Clippings>
+
+-   Plop addition: I added to the plop-file enough logic to verify the latest
+    highest 100days posts so I could run the script on any given day and have
+    the value default to n+1 (n being the previous highest increment).
+-   Giving a css gradient background a spin: this is temporary and will
+    eventually toggle along with other theme settings
+-   Fixed some layout issues on shorter screens. The header has a max-height
+    that is to restrictive at very short pages (but necessary for vertically
+    centering the content otherwise).
+-   Wrote some thoughts above on feeling inadequate.
+
+</Clippings>

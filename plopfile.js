@@ -1,8 +1,34 @@
 const datePicker = require('inquirer-datepicker')
-var handlebars = require('handlebars');
-handlebars.registerHelper('moment', require('helper-moment'));
+const fs = require('fs')
+const path = require('path')
 
-module.exports = plop => {
+/**
+ * Register the moment helpers so our plop templates output friendlier dates
+ */
+var handlebars = require('handlebars')
+handlebars.registerHelper('moment', require('helper-moment'))
+
+/**
+ * Read the directory of files and return the highest day completed so far (so
+ * we can increment by one)
+ */
+const currentHighest = fs
+    .readdirSync('./pages/100days', { withFileTypes: true })
+    .filter((dirEnt) => {
+        const entryName = dirEnt.name
+        return dirEnt.isFile() && entryName.startsWith('day')
+    })
+    .map((dirEnt) => {
+        const { name } = path.parse(dirEnt.name)
+        // Returning just the number
+        return name.slice(-2)
+    })
+    .map((strVal) => parseInt(strVal, 10))
+    .reduce((prev, curr) => {
+        return curr > prev ? curr : prev
+    })
+
+module.exports = (plop) => {
     plop.setPrompt('datepicker', datePicker)
     // plop generator code
     plop.setGenerator('100days', {
@@ -14,19 +40,19 @@ module.exports = plop => {
                 name: 'date',
                 message: 'Date of this entry',
                 default: new Date(),
-                format: ['Y', '/', 'MM', '/', 'DD']
+                format: ['Y', '/', 'MM', '/', 'DD'],
             },
             {
                 type: 'number',
                 name: 'number',
                 message: '#100Days number',
-                default: 10,
+                default: currentHighest + 1,
             },
             {
                 type: 'input',
                 name: 'title',
                 message: 'Post title (h1)',
-                default: '100 Projects day {{number}}',
+                default: '100 Projects day..',
             },
             {
                 type: 'input',
@@ -42,5 +68,13 @@ module.exports = plop => {
                 templateFile: './defaultTemplates/100days.hbs',
             },
         ],
+    })
+
+    plop.setGenerator('component', {
+        description: "Page component or element",
+        prompts: [],
+        actions: [
+            
+        ]
     })
 }
