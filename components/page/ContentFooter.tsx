@@ -1,13 +1,20 @@
 import React from 'react'
+import Link from 'next/link'
 
 import styles from './ContentFooter.module.scss'
 
 const currentYear = new Date().getFullYear()
 
+const ColophonLink = () => (
+    <span className={styles.colophonLink}>
+        <Link href="/colophon">colophon</Link>
+    </span>
+)
+
 const PageFooter: React.FunctionComponent = () => (
     <>
         <div className={styles.contentFooter}>
-            <p>Copyright &copy; {currentYear} jem.dev</p>
+            <p>Copyright &copy; {currentYear} jem.dev <ColophonLink /></p>
         </div>
     </>
 )

@@ -74,7 +74,11 @@ module.exports = (plop) => {
         description: "Page component or element",
         prompts: [],
         actions: [
-            
+            {
+                type: 'addMany',
+                path: './pages/100days/day{{number}}.mdx',
+                templateFile: './defaultTemplates/100days.hbs',
+            },
         ]
     })
 }

@@ -1,0 +1,99 @@
+export const frontMatter = {
+    title: 'Colophon',
+    created: '20-09-07',
+    desc:
+        'This page is a brief summary of some of the technologies and decisions that make up this site.',
+}
+
+This page is a brief summary of some of the technologies and decisions that make
+up this site.
+
+> In publishing, a _colophon_ is a brief statement containing information about
+> the publication of a book such as the place of publication, the publisher, and
+> the date of publication. —from
+> [Wikipedia](<https://en.wikipedia.org/wiki/Colophon_(publishing)>)
+
+> When used in reference to
+> [Web sites](https://www.webopedia.com/TERM/W/web_site.html) , a /colophon/ is
+> a description of the tools, systems and resources used to create the Web site
+> and keep it operational. The colophon serves to acknowledge and give credit to
+> all the resources that combined to produce the specific site. A site typically
+> will devote a separate page to detailing its colophon. —from
+> [webopedia](https://www.webopedia.com/TERM/C/colophon.html)
+
+## Attribution
+
+This website is owned by Jem, who also goes by Jam, or JemJam (or “Jem Bezooyen”
+if you needed my full name). All the content and opinions here are my own. If
+you find issue with any of the site content posted here, or problems with
+functionality and/or accessibility, please reach out to me.
+
+## Next.js
+
+I definitely worried too much about whether I should build a static dev blog
+with Next (or Gatsby, or anything framework like). There are plenty of options
+to compile static content into html sites that don’t include any additional
+JavaScript (such as eleventy), and for a content based websites that’s often a
+better choice.
+
+However, I also knew that as a web developer who’s been embedded on react-like
+projects for years, it was only a matter of time before I’d want to start adding
+either extra scripts or components into pages. (TBQH: once I was aware of what
+MDX was capable of, I knew I wanted it in my content pipeline.) The challenge is
+finding a performant means of bundling pages so they’re always as light as
+possible, but then layering our component scripts on top to enable some cool
+enhancements.
+
+I ended up settling on building this iteration with “Next.js”, but to keep the
+bundle size minimal, I’m using Preact instead of React. Next.js offers excellent
+developer experience coupled with typescript support, support for api routes,
+static and server side rendering, and myriad other web app enhancements.
+
+## MDX
+
+The pages themselves make use of MDX. This means they look like Markdown
+templates, but they also have a little bit of extra (JSX). This allows me to
+import individual components and make use of them within the content of the
+pages.
+
+Because I’m using these MDX documents for the pages themselves, I can also
+opt-in (on a page by page basis) to additional data prefetching via the next.js
+`getStaticProps`. I’m using this in certain list pages to feed in data for
+rendering.
+
+## Performance
+
+Making web applications that are accessible and also performant is important to
+me. Access to the internet varies, and I can’t expect every user to have high
+speed connectivity, or to be connecting from a powerful device.
+
+As I iterate on this project, I continually measure the web page performance. As
+noted, I’ve chosen next and preact together to keep the initial bundles minimal.
+When pages require additional components or data fed into them, it’s done on a
+case by case basis (and all handled via javascript esm imports/exports). Pages
+use javascript, but they’re also compiled to static html pages first, which
+ensures that if the JS isn’t running (or fails to run) that at least the root
+page renders properly. And if JS is working, we get faster page transitions and
+extra functionality immediately.
+
+## Design
+
+I took inspiration for some of the layout components from the very cool Every
+Layout project. Media queries are used sparingly, but occasionally, to try to
+correct for layout issues.
+
+### Colors
+
+I think color theory is neat. I tried to use a (close to) monochromatic green
+theme, but I like to mix up the saturation / luminosity as necessary to
+accentuate different elements. Typically I keep the color theme on Coolors for
+easy access.
+
+Because of my own issues with brightness levels, I intend for the base theme to
+have both dark and light modes.
+
+## Fonts
+
+None yet! I just set the base font to `sans-serif` cuz nearly every device
+should have /something/. I’ll tune this eventually, but you can’t get faster
+than “no font loading”.
