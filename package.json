@@ -17,7 +17,7 @@
         "fathom-client": "^3.0.0",
         "front-matter": "^4.0.2",
         "lodash": "^4.17.20",
-        "next": "9.5.2",
+        "next": "^10.0.0",
         "next-mdx-enhanced": "github:jemjam/next-mdx-enhanced#fix-for-next-9.5.2",
         "preact": "^10.4.7",
         "preact-render-to-string": "^5.1.10",
