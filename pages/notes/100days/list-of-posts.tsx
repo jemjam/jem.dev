@@ -30,7 +30,7 @@ const ListPage = ({ ...allProps }) => {
             <ul>
                 {allProps.files.map((postName:any) => (
                     <li>
-                        <Link href={`/100days/${postName}`}>{postName}</Link>
+                        <Link href={`note/100days/${postName}`}>{postName}</Link>
                     </li>
                 ))}
             </ul>
