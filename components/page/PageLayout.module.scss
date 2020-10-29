@@ -6,9 +6,8 @@
     width: 100%;
     min-height: 100%;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     flex-direction: row-reverse;
+    flex-wrap: wrap;
     padding: 0.5rem;
 
     background-color: rgba(0, 0, 0, 0.1);
@@ -20,7 +19,8 @@
 }
 
 .pageContentWrapper {
-    min-width: calc(((1 / 1.618) * 100%) - 1rem);
+    // min-width: calc(((1 / 1.618) * 100%) - 1rem);
+    min-width: 66%;
     flex-basis: 0;
     flex-grow: 999;
     display: flex;
@@ -60,22 +60,12 @@
 }
 
 .contentArea {
-    width: 100%;
-    padding: 2rem;
-
-    max-width: 72ch;
     margin: 0 auto;
-    & > *:first-child {
-        margin-top: 0;
-    }
-    & > *:last-child {
-        margin-bottom: 0;
-    }
-}
+    padding: 2rem;
+    max-width: 100%;
+    padding-top: var(--s5);
+    padding-bottom: var(--s5);
 
-.pageFooter {
-    background-color: black;
-    color: white;
     & > *:first-child {
         margin-top: 0;
     }

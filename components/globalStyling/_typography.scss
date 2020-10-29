@@ -1,0 +1,87 @@
+:root {
+    // System Font Stack Sans:
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+        helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial,
+        sans-serif;
+
+    // Font Scaling
+    line-height: calc(1.4 * var(--scale));
+
+    font-size: 1rem;
+    @media screen and (max-width: 780px) {
+        font-size: clamp(0.8em, 2vw, 1.25em);
+    }
+    @media screen and (min-width: 1000px) {
+        font-size: clamp(1rem, 1.6vw, 1.4em);
+    }
+
+}
+
+code,
+pre {
+    // Mono System Font Stack:
+    font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
+        monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 300;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    &:first-child {
+        // Almost always a heading at the start of a section
+        // should use section padding instead
+        margin-top: 0;
+    }
+}
+
+@mixin standardSizing($size) {
+    font-size: var(--s#{$size});
+    margin-top: var(--s#{$size + 1});
+    line-height: var(--s#{$size + 1});
+    margin-bottom: var(--s1);
+}
+
+
+h1 {
+    @include standardSizing(4);
+}
+
+h2 {
+    @include standardSizing(3);
+}
+
+h3 {
+    @include standardSizing(2);
+}
+
+h4 {
+    @include standardSizing(1);
+}
+
+h5, h6 {
+    font-size: var(--s0);
+    margin-top: var(--s2);
+    margin-bottom: var(--s1);
+
+    font-weight: bold;
+}
+
+h6 { font-weight: normal; }
+
+code {
+    background-color: lightgray;
+    padding: 0.2ex 0.8ex;
+    border-radius: 1ex;
+    display: inline-block;
+}
+
+p {
+    margin: var(--s2) 0;
+}

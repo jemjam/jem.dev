@@ -17,9 +17,9 @@ import App, { AppProps } from 'next/app'
 
 import PageLayout from 'components/page'
 import SiteHeader from 'components/site/Header'
-import PageFooter from 'components/page/ContentFooter'
+import SiteFooter from 'components/site/Footer'
 import Link from 'next/link'
-import 'components/global-styles.scss'
+import 'components/globalStyling/styles.scss'
 
 // Some codeblock styles for now...
 import 'highlight.js/styles/shades-of-purple.css'
@@ -60,7 +60,7 @@ const Application: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
     console.log('_app.tsx pageProps:', pageProps)
 
     return (
-        <PageLayout header={<SiteHeader />} footer={<PageFooter />}>
+        <PageLayout header={<SiteHeader />} footer={<SiteFooter />}>
             <MDXProvider components={components}>
                 <Component {...pageProps} />
             </MDXProvider>

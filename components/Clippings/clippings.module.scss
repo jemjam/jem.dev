@@ -6,6 +6,11 @@
 }
 
 .clippings {
+
+  padding: var(--s0) var(--s-2);
+  border: 1px dashed;
+  background-color: gray;
+
   :global(li) {
     list-style-type: lower-roman;
   }

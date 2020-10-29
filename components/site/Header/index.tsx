@@ -3,7 +3,13 @@ import Link from 'next/link'
 
 import styles from './Header.module.scss'
 
-const WordMark = () => <h1>{`<jem.dev />`}</h1>
+const WordMark = () => (
+    <h1 className={styles.logoWordMark}>
+        {`<`}
+        <span className={styles.logoWordText}>{`jem.dev`}</span>
+        {`/>`}
+    </h1>
+)
 
 const Logo = () => (
     <Link href="/">
@@ -27,7 +33,7 @@ const menu: MenuMap = {
     Home: '/',
     'About Me': '/whois',
     '#100DaysOfProjects': '/100days',
-    'divider1': '---',
+    divider1: '---',
     'Contact me (twitter)':
         'https://twitter.com/messages/compose?recipient_id=42684557',
 }

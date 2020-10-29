@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-import styles from './ContentFooter.module.scss'
+import styles from './Footer.module.scss'
 
 const currentYear = new Date().getFullYear()
 

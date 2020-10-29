@@ -18,9 +18,9 @@ const Page:FunctionComponent<PageProps> = ({children, header, footer}) => (
         <div className={styles.pageContentWrapper}>
 
             <main className={styles.pageContent}>
-                <div className={styles.contentArea}>
+                <section className={styles.contentArea}>
                   {children}
-                </div>
+                </section>
             </main>
             <footer className={styles.pageFooter}>{footer}</footer>
         </div>
