@@ -3,7 +3,7 @@ const images = require('remark-images')
 const emoji = require('remark-emoji')
 const highlight = require('remark-highlight.js')
 const withMdxEnhanced = require('next-mdx-enhanced')
-const redirects = require('./redirects').default
+const redirects = require('./redirects')
 
 
 // Standard (non-enhanced) mdx approach...

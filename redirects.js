@@ -7,6 +7,6 @@ const redirects = [
     { source: '/whois', destination: '/about', permanent: true },
 ]
 
-module.exports = () => {
+module.exports = async () => {
     return redirects
 }
