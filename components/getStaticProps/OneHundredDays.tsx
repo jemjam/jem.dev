@@ -6,7 +6,8 @@ import { parse } from 'path'
  */
 
 export const getStaticProps = (_: any) => {
-    const files = importAll.sync('../../pages/100days/*.mdx')
+    const files = importAll.sync('../../pages/notes/100days/*.mdx')
+    console.log('files?', files)
     const postsArray = Object.keys(files)
         .filter((filePath) => {
             return !filePath.includes('index')

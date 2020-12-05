@@ -31,8 +31,8 @@ interface MenuMap {
  */
 const menu: MenuMap = {
     Home: '/',
-    'About Me': '/whois',
-    '#100DaysOfProjects': '/100days',
+    'About': '/about',
+    'Notes': '/notes',
     divider1: '---',
     'Contact me (twitter)':
         'https://twitter.com/messages/compose?recipient_id=42684557',

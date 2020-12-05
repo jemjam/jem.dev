@@ -3,6 +3,8 @@ const images = require('remark-images')
 const emoji = require('remark-emoji')
 const highlight = require('remark-highlight.js')
 const withMdxEnhanced = require('next-mdx-enhanced')
+const redirects = require('./redirects')
+
 
 // Standard (non-enhanced) mdx approach...
 const withMDX = require('@next/mdx')({
@@ -53,4 +55,5 @@ module.exports = withMDX({
         NEXT_PUBLIC_ANALYTICS_SITE_ID: process.env.FATHOM_SITE_ID,
         NEXT_PUBLIC_ANALYTICS_URL: process.env.FATHOM_URL,
     },
+    redirects,
 })

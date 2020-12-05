@@ -11,7 +11,7 @@ const ListOfPages: FunctionComponent<ListProps> = ({ postsArray }) => {
         <ul>
             {postsArray.map((postName) => (
                 <li>
-                    <Link href={`/100days/${postName}`}>{postName}</Link>
+                    <Link href={`100days/${postName}`}>{postName}</Link>
                 </li>
             ))}
         </ul>
